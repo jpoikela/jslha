@@ -1,6 +1,6 @@
 /*jshint node: true */
 'use strict';
-module.exports = function (grunt) {
+module.exports = function(grunt) {
 
   var version = require("./package.json").version;
 
@@ -25,6 +25,18 @@ module.exports = function (grunt) {
         }
       }
     },
+    "console-clean": {
+      all: {
+        files: [
+          {src: ['dist/jslha.js'], dest: 'dist/jslha.js'}
+        ]
+      },
+      options: {
+        strategy: function(content) {
+          return '';
+        }
+      }
+    },
     uglify: {
       options: {
         mangle: true,
@@ -38,9 +50,10 @@ module.exports = function (grunt) {
   });
 
   grunt.loadNpmTasks('grunt-browserify');
+  grunt.loadNpmTasks('grunt-console-clean');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
-  grunt.registerTask("build", ["browserify", "uglify"]);
+  grunt.registerTask("build", ["browserify", "console-clean", "uglify"]);
   grunt.registerTask("default", ["jshint", "build"]);
 };
