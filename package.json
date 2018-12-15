@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
-    "browserify": "^16.2.2",
+    "browserify": "^16.2.3",
     "grunt": "^1.0.3",
     "grunt-browserify": "^5.3.0",
     "grunt-console-clean": "^0.3.5",
